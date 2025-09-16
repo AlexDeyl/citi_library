@@ -42,3 +42,16 @@ python manage.py createsuperuser
 # 6) Запуск
 python manage.py runserver
 # http://127.0.0.1:8000/ (админка: /admin)
+
+## Основные команды проекта
+
+### Загрузка данных
+```bash
+# Только справочники
+python manage.py load_seed data/seed.json --flush --seed-holdings none
+
+# Все книги в первую библиотеку
+python manage.py load_seed data/seed.json --flush --seed-holdings all_to_first
+
+# Случайное распределение
+python manage.py load_seed data/seed.json --flush --seed-holdings random --random-copies 2
