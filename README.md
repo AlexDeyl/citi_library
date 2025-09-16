@@ -42,7 +42,7 @@ python manage.py createsuperuser
 # 6) Запуск
 python manage.py runserver
 # http://127.0.0.1:8000/ (админка: /admin)
-
+```
 ## Основные команды проекта
 
 ### Загрузка данных
@@ -55,3 +55,27 @@ python manage.py load_seed data/seed.json --flush --seed-holdings all_to_first
 
 # Случайное распределение
 python manage.py load_seed data/seed.json --flush --seed-holdings random --random-copies 2
+```
+### Симуляция поступления книг
+```bash
+# +1 экз. к 10 случайным книгам в первую библиотеку
+python manage.py simulate_intake --random-count 10 --copies 1
+
+# Явно указать библиотеку и книги
+python manage.py simulate_intake --library-id 1 --book-ids 1,2,3,4 --copies 2
+```
+
+### Перераспределение
+```bash
+# План (dry-run)
+python manage.py rebalance --capacity-aware
+
+# Применение изменений
+python manage.py rebalance --capacity-aware --apply
+
+# Приоритет: новые книги первыми
+python manage.py rebalance --capacity-aware --priority year_desc
+
+# Приоритет: книги указанных авторов
+python manage.py rebalance --capacity-aware --priority author_first --authors 1,2,3
+```
