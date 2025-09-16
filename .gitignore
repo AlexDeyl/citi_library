@@ -1,0 +1,27 @@
+# Виртуальное окружение
+.venv/
+venv/
+
+# Python cache / compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# IDE / редакторы
+.vscode/
+.idea/
+*.swp
+
+# База данных SQLite
+db.sqlite3
+
+# Файлы окружения
+.env
+
+# Статические файлы, если будут собираться
+/staticfiles/
+/media/
+
+# Логи
+*.log
